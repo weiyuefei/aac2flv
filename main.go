@@ -10,10 +10,17 @@ import (
 )
 
 func main() {
-	aac := NewAACReader("JustOneLastDance.aac")
+	if aac == nil {
+		fmt.Println("New AACReader failed")
+		return
+	}
 	defer aac.Cleanup()
 
 	flv := NewFLV("JustOneLastDance.flv")
+	if flv == nil {
+		fmt.Println("New FLVWriter failed")
+		return
+	}
 	defer flv.Cleanup()
 
 	// scriptdata tag is not must
